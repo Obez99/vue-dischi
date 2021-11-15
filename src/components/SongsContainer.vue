@@ -1,6 +1,6 @@
 <template>
   <div class="container my-5">
-    <div class="loading-screen">
+    <div class="loading-screen" v-if="!isLoaded">
       <img src="../assets/logo.png" alt="" />
       <div class="loader">
         <div class="point point1"></div>
@@ -30,6 +30,7 @@ export default {
   data() {
     return {
       songsList: [],
+      isLoaded: false,
     };
   },
   mounted() {
@@ -37,6 +38,11 @@ export default {
       .get("https://flynn.boolean.careers/exercises/api/array/music")
       .then((response) => {
         this.songsList = response.data.response;
+
+        //La schermata di caricamento viene visualizzata solo dopo che l'API viene caricato, ma ho impostato un timer di 2 secondi a scopo didattico
+        setTimeout(() => {
+          this.isLoaded = true;
+        }, 2000);
       });
   },
 };
