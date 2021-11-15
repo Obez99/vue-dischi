@@ -1,16 +1,18 @@
 <template>
   <div class="container my-5">
     <div class="row row-cols-1 row-cols-md-5 g-5">
-      <div class="col">
-        <div class="card p-3">
-          <img class="card-img-top" />
-          <div class="card-body">
-            <h5 class="card-title text-white">Test</h5>
+      <div class="col" v-for="(song, i) in songsList" :key="i">
+        <div class="card p-3 h-100">
+          <img class="card-img-top" :src="song.poster" />
+          <div class="card-body text-center">
+            <h5 class="card-title text-white text-uppercase">
+              {{ song.title }}
+            </h5>
+            <p class="card-text text-secondary mb-0">
+              {{ song.author }}
+            </p>
             <p class="card-text text-secondary">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut
-              velit nihil voluptas mollitia quas accusamus possimus eius
-              numquam! Officiis impedit adipisci aspernatur alias! Ipsum,
-              quaerat nesciunt dolore a similique veritatis?
+              {{ song.year }}
             </p>
           </div>
         </div>
