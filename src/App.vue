@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <header>ciao</header>
+    <header class="bg-secondary px-3 py-1">
+      <img src="@/assets/logo.png" alt="logo" />
+    </header>
   </div>
 </template>
 
@@ -11,5 +13,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "styles/app";
+@import "@/styles/app";
+@import "@/styles/header.scss";
 </style>
