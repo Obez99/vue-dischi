@@ -10,18 +10,10 @@
 </template>
 
 <script>
-import axios from "axios";
 import SongsContainer from "./components/SongsContainer.vue";
 export default {
   components: { SongsContainer },
   name: "App",
-  mounted() {
-    axios
-      .get("https://flynn.boolean.careers/exercises/api/array/music")
-      .then((response) => {
-        console.log(response.data);
-      });
-  },
 };
 </script>
 
