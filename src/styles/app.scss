@@ -1,6 +1,10 @@
 @import "~bootstrap/scss/bootstrap";
-
+@import "./variables.scss";
 #app{
   height: 100vh;
   background-color: rgb(25, 45, 59);
+
+  .card{
+    background-color: $transparent-color;
+  }
 }
