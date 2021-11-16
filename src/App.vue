@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <header class="px-3 py-2">
-      <img src="@/assets/logo.png" alt="logo" />
-    </header>
+    <Header></Header>
     <main>
       <SongsContainer></SongsContainer>
     </main>
@@ -11,14 +9,17 @@
 
 <script>
 import SongsContainer from "./components/SongsContainer.vue";
+import Header from "./components/Header.vue";
 export default {
-  components: { SongsContainer },
+  components: {
+    SongsContainer,
+    Header,
+  },
   name: "App",
 };
 </script>
 
 <style lang="scss">
 @import "@/styles/app";
-@import "@/styles/header.scss";
 @import "@/styles/variables.scss";
 </style>
