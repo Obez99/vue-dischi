@@ -1,6 +1,7 @@
 <template>
   <div class="container my-5">
     <LoadingScreen v-if="!isLoaded"></LoadingScreen>
+    <FilterSelect :genres="getGenres"></FilterSelect>
     <div class="row row-cols-1 row-cols-md-5 g-5">
       <div class="col" v-for="(song, i) in songsList" :key="i">
         <SongCard
@@ -18,10 +19,12 @@
 import axios from "axios";
 import SongCard from "./SongCard.vue";
 import LoadingScreen from "./LoadingScreen.vue";
+import FilterSelect from "./FilterSelect.vue";
 export default {
   components: {
     SongCard,
     LoadingScreen,
+    FilterSelect,
   },
   name: "SongsContainer",
   data() {
@@ -41,6 +44,15 @@ export default {
           this.isLoaded = true;
         }, 2000);
       });
+  },
+  computed: {
+    getGenres() {
+      const genresList = [];
+      this.songsList.forEach((song) => {
+        if (!genresList.includes(song.genre)) genresList.push(song.genre);
+      });
+      return genresList;
+    },
   },
 };
 </script>
