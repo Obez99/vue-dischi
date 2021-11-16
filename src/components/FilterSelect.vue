@@ -6,7 +6,7 @@
       class="form-select mb-5"
       @change="$emit('genreChange', choice)"
     >
-      <option selected value="">Tutti i generi</option>
+      <option value="">Tutti i generi</option>
       <option v-for="(genre, i) in genres" :key="i" :value="genre">
         {{ genre }}
       </option>
@@ -20,7 +20,7 @@ export default {
   props: { genres: Array },
   data() {
     return {
-      choiche: "",
+      choice: "",
     };
   },
 };
