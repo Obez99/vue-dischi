@@ -1,9 +1,9 @@
 <template>
   <div class="container my-5">
     <LoadingScreen v-if="!isLoaded"></LoadingScreen>
-    <FilterSelect :genres="getGenres"></FilterSelect>
+    <FilterSelect :genres="getGenres" @genreChange="setGenre"></FilterSelect>
     <div class="row row-cols-1 row-cols-md-5 g-5">
-      <div class="col" v-for="(song, i) in songsList" :key="i">
+      <div class="col" v-for="(song, i) in filterGenres" :key="i">
         <SongCard
           :image="song.poster"
           :title="song.title"
@@ -31,6 +31,7 @@ export default {
     return {
       songsList: [],
       isLoaded: false,
+      selectedGenre: "",
     };
   },
   mounted() {
@@ -52,6 +53,20 @@ export default {
         if (!genresList.includes(song.genre)) genresList.push(song.genre);
       });
       return genresList;
+    },
+
+    filterGenres() {
+      if (!this.selectedGenre) return this.songsList;
+      else {
+        return this.songsList.filter((song) => {
+          if (song.genre === this.selectedGenre) return song;
+        });
+      }
+    },
+  },
+  methods: {
+    setGenre(genre) {
+      this.selectedGenre = genre;
     },
   },
 };
